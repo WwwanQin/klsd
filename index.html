@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1557471_h2fzz0ggg6l.css">
+    <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
+    <link rel="stylesheet" href="./less/index.css">
+    <script src="./lib/jquery-1.12.4.js"></script>
+    <script src="./lib/template-web.js"></script>
+    <script src="./lib/nprogress/nprogress.js"></script>
+</head>
+<body>
+    
+    <div class="content">
+        <div class="top">
+            <h2>
+                <a href="#" style="color: white;">克鲁赛德战记</a>
+            </h2>
+            <input type="text" placeholder="输入要查询的英雄" class="heroSearch">
+            <input type="button" value="搜索" class="heroBtn">
+            <input type="button" value="清空" class="delBtn">
+            <input type="button" value="上一页" class="prevBtn">
+            <input type="text" value="1/9" class="pageNumber" disabled>
+            <input type="button" value="下一页" class="nextBtn">
+        </div>
+
+        <div class="body w">
+            <ul class="heroList">
+            </ul>
+        </div>
+        <div class="searchMenu">
+            <i class="i iconshezhi"></i>
+            <ul data-online="false" class="menuList">
+                <li>剑士</li>
+                <li>骑士</li>
+                <li>弓手</li>
+                <li>猎人</li>
+                <li>法师</li>
+                <li>祭司</li>
+            </ul>
+        </div>
+        <div class="goToTop">
+            顶部
+        </div>
+    </div>
+
+    <script type="text/html" id="t1">
+        {{each list as item index}}
+            <li class="putonLi">
+                <div class="lef">
+                    <img src="{{item.icon}}">
+                </div>
+                <div class="right">
+                    <p>{{item.name}}</p>
+                    <p>
+                        <a href="#">{{item.skill}}</a>
+                    </p>
+                </div>
+            </li>
+        {{/each}}
+    </script>
+
+    <script type="text/html" id="t2">
+        {{ each heros as item index }}
+            <li class="teshuLi">
+                <div class="heroTypeLeft">
+                    <p>{{ item.heroName }}</p>
+                    <div class="iconPic">
+                        <img src="{{ item.heroIcon }}">
+                    </div>
+                </div>
+                <div class="heroTypeCenter">
+                    <p>{{ item.skillName }}</p>
+                    <div class="skillPic">
+                        <img src="{{ item.skillIcon }}" title="{{ item.skillName }}">
+                    </div>
+                </div>
+                <div class="heroTypeRight">
+                    <p>{{ item.weaponName }}</p>
+                    <div class="weaponPic">
+                        <img src="{{ item.weaponIcon }}" title="{{ item.weaponName }}">
+                    </div>
+                </div>
+            </li>
+        {{ /each }}
+    </script>
+
+    <script src="./js/index.js"></script>
+</body>
+</html>
