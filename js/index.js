@@ -76,7 +76,7 @@
         if ($('.heroSearch').val() != '') {
             $.ajax({type:'get',url:'https://autumnfish.cn/api/cq',
                 data:{
-                    query:`${$('.heroSearch').val()}`
+                    query:`${$('.heroSearch').val().trim()}`
                 },
                 success:res=>{
                     if(res.list.length >0){
@@ -96,6 +96,7 @@
         } else {
             searchHeros();
         }
+        $('.heroSearch').val('');
     })
     //返回首页事件
     $('.goToTop').on('click', () => {
