@@ -12,7 +12,9 @@
     <script src="./lib/nprogress/nprogress.js"></script>
 </head>
 <body>
-    
+    <div class="mask">
+        <img src="./img/loading01.gif" alt="" class="maskBg">
+    </div>
     <div class="content">
         <div class="top">
             <h2>
@@ -53,7 +55,7 @@
                     <img src="{{item.icon}}">
                 </div>
                 <div class="right">
-                    <p>{{item.name}}</p>
+                    <p class="heroName">{{item.name}}</p>
                     <p>
                         <a href="#">{{item.skill}}</a>
                     </p>
@@ -66,7 +68,7 @@
         {{ each heros as item index }}
             <li class="teshuLi">
                 <div class="heroTypeLeft">
-                    <p>{{ item.heroName }}</p>
+                    <p class="heroName">{{ item.heroName }}</p>
                     <div class="iconPic">
                         <img src="{{ item.heroIcon }}">
                     </div>

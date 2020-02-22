@@ -128,7 +128,7 @@
             }
         }
     })
-    //设置所有的ul点击事件
+    //设置所有的ul点且切换类型击事件
     $('.menuList').on('click',(e)=>{
         if(e.target.tagName == 'LI'){
             let heroType = $(e.target).text();
@@ -138,5 +138,30 @@
                 $('.pageNumber').val(`1/1`);
             })
         }
+    })
+    //设置查看技能图点击事件
+    $('.heroList').on('click','.heroName',(e)=>{
+        let name = $(e.target).text();
+        $('.mask').show()
+        $.ajax(
+            {            
+                beforeSend:()=>{
+                    $('.mask img').attr('src','./img/loading01.gif');
+                },
+                type:'get',
+                url:`https://autumnfish.cn/api/cq/gif`,
+                data:{
+                    'name':name
+                },
+                dataType:'json',
+                success:(res)=>{
+                    console.log(res);
+                    $('.mask img').attr('src',res.data.skillGif);
+                }
+            }
+        )
+    })
+    $('.mask').on('click',(e)=>{
+        $('.mask').fadeOut();
     })
 })(window)
