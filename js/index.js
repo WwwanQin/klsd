@@ -38,22 +38,23 @@
             NProgress.done()
         }
     })
-    //包一下ajax
-    let search = function (type, url, data, fn) {
+    //加载内容
+    let searchHeros = function(){
         $.ajax({
-            type: type,
-            url: url,
-            data: data,
-            dataType: 'json',
-            success: (res) => {
-                fn(res);
+            type:'get',
+            url:'https://autumnfish.cn/api/cq/page',
+            data:{
+                pageNum:`${pageNum}`,
+                pageSize:`${pageSize}`
+            },
+            success:res=>{
+                totalPage = res.totalPage;
+                $('.pageNumber').val(`${pageNum}/${totalPage}`);
+                $('.heroList').html(template('t1', res));
             }
         })
     }
-    search(`get`, `https://autumnfish.cn/api/cq/page?pageNum=${pageNum}&pageSize=${pageSize}`, '', function (res) {
-        totalPage = res.totalPage;
-        $('.heroList').html(template('t1', res));
-    });
+    searchHeros();
     // 上一页
     $('.prevBtn').on('click', () => {
         if (pageNum > 1) {
@@ -72,21 +73,29 @@
     })
     //查询接口
     $('.heroBtn').on('click', () => {
-        // pageNum = 1;
         if ($('.heroSearch').val() != '') {
-            search(`get`, `https://autumnfish.cn/api/cq?query=${$('.heroSearch').val()}`, '', function (res) {
-                $('.pageNumber').val(`1/1`);
-                $('.heroList').html(template('t1', res));
-            });
+            $.ajax({type:'get',url:'https://autumnfish.cn/api/cq',
+                data:{
+                    query:`${$('.heroSearch').val()}`
+                },
+                success:res=>{
+                    if(res.list.length >0){
+                        $('.pageNumber').val(`1/1`);
+                        $('.heroList').html(template('t1', res));
+                    }else{
+                        $('.heroList').html(
+                            `<li style="width: 360px;">
+                                <img src="./img/fengjing.png" style="width: 100%;">
+                                <p class="noContent">‘ 孤舟蓑笠翁，独钓寒江雪 ’</p>
+                                <p class="noContent2">未查询到内容，换个关键词再找找哦 =。=</p>
+                            </li>`
+                        )
+                    }
+                }
+            })
         } else {
-            search(`get`, `https://autumnfish.cn/api/cq/page?pageNum=${pageNum}&pageSize=${pageSize}`, '', function (res) {
-                console.log(res);
-                totalPage = res.totalPage;
-                $('.pageNumber').val(`${pageNum}/${totalPage}`);
-                $('.heroList').html(template('t1', res));
-            });
+            searchHeros();
         }
-
     })
     //返回首页事件
     $('.goToTop').on('click', () => {
@@ -133,9 +142,16 @@
     $('.menuList').on('click',(e)=>{
         if(e.target.tagName == 'LI'){
             let heroType = $(e.target).text();
-            search(`get`, `https://autumnfish.cn/api/cq/category?type=${heroType}`, '',res=>{
-                $('.heroList').html(template('t2',res.data));
-                $('.pageNumber').val(`1/1`);
+            $.ajax({
+                type:'get',
+                url:'https://autumnfish.cn/api/cq/category',
+                data:{
+                    type:`${heroType}`
+                },
+                success:res =>{
+                    $('.heroList').html(template('t2',res.data));
+                    $('.pageNumber').val(`1/1`);    
+                }
             })
         }
     })
@@ -170,12 +186,14 @@
     let y = 0;
     let flag = false;
     $('.searchMenu').hover((e)=>{
+        if($('.taskMask').attr('data-show') == 'false') $('.taskMask').attr('data-show','true').fadeIn(1000);
         $('.searchMenu').stop().animate({
             'border-radius':'50%'
         })
         flag=false;
     })
     $('.searchMenu').mouseleave((e)=>{
+        $('.taskMask').fadeOut(1000);
         $('.searchMenu').stop().animate({
             'border-radius':'10%'
         })

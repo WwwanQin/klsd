@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  user-select: none;
 }
 body {
   background-color: #3d3d3d;
@@ -23,6 +24,8 @@ h6 {
   line-height: 55px;
   margin-left: 20px;
   user-select: none;
+  color: white;
+  font-weight: 100;
 }
 .mask {
   background-color: #222225ed;
@@ -36,6 +39,37 @@ h6 {
   border-radius: 5px;
   display: block;
   margin: 200px auto;
+}
+.noContent {
+  text-align: center;
+  font-size: 23px;
+  color: white;
+  font-style: oblique;
+  font-weight: 100;
+}
+.noContent2 {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 55px;
+  margin-left: 20px;
+  user-select: none;
+  color: white;
+  font-weight: 100;
+  text-align: center;
+}
+.taskMask {
+  position: fixed;
+  bottom: 10px;
+  right: 15px;
+  background-color: #654c4c;
+  height: 70px;
+  width: 385px;
+  text-align: center;
+  line-height: 70px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 700;
+  display: none;
 }
 .content .top {
   height: 65px;
