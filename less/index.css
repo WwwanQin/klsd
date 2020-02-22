@@ -204,23 +204,29 @@ h6 {
   bottom: 15px;
   right: 15px;
 }
-.searchMenu ul li:nth-child(1) {
+.searchMenu ul li:nth-child(1).active {
   color: pink;
+  background-color: #e26161;
 }
-.searchMenu ul li:nth-child(2) {
+.searchMenu ul li:nth-child(2).active {
   color: pink;
+  background-color: #69b7ce;
 }
-.searchMenu ul li:nth-child(3) {
+.searchMenu ul li:nth-child(3).active {
   color: pink;
+  background-color: #7fb545;
 }
-.searchMenu ul li:nth-child(4) {
+.searchMenu ul li:nth-child(4).active {
   color: pink;
+  background-color: #deae26;
 }
-.searchMenu ul li:nth-child(5) {
+.searchMenu ul li:nth-child(5).active {
   color: pink;
+  background-color: #a45bca;
 }
-.searchMenu ul li:nth-child(6) {
+.searchMenu ul li:nth-child(6).active {
   color: pink;
+  background-color: #e84daa;
 }
 .searchMenu:hover {
   background-color: #807878;

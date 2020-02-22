@@ -132,6 +132,7 @@
     $('.menuList').on('click',(e)=>{
         if(e.target.tagName == 'LI'){
             let heroType = $(e.target).text();
+            $(e.target).addClass('active').siblings().removeClass('active');
             search(`get`, `https://autumnfish.cn/api/cq/category?type=${heroType}`, '',res=>{
                 $('.heroList').html(template('t2',res.data));
                 $('.pageNumber').val(`1/1`);
