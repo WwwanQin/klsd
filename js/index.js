@@ -72,6 +72,11 @@
         $('.pageNumber').val(`${pageNum}/${totalPage}`);
     })
     //查询接口
+    $('.heroSearch').on('keyup',(e)=>{
+        if(e.keyCode == 13){
+            $('.heroBtn').click();
+        }
+    })
     $('.heroBtn').on('click', () => {
         if ($('.heroSearch').val() != '') {
             $.ajax({type:'get',url:'https://autumnfish.cn/api/cq',
