@@ -72,6 +72,7 @@
     })
     //查询接口
     $('.heroBtn').on('click', () => {
+        // pageNum = 1;
         if ($('.heroSearch').val() != '') {
             search(`get`, `https://autumnfish.cn/api/cq?query=${$('.heroSearch').val()}`, '', function (res) {
                 $('.pageNumber').val(`1/1`);
@@ -106,7 +107,7 @@
         $('.heroSearch').val('');
     })
     //菜单浮动事件
-    $('.searchMenu').on('click',(e)=>{
+    $('.searchMenu').on('dblclick',(e)=>{
         if(e.target.tagName == 'DIV' || e.target.tagName == 'I'){
             if($('.searchMenu ul').attr('data-online') == 'false'){
                 $('.searchMenu ul li').each((index,item)=>{
@@ -132,7 +133,6 @@
     $('.menuList').on('click',(e)=>{
         if(e.target.tagName == 'LI'){
             let heroType = $(e.target).text();
-            $(e.target).addClass('active').siblings().removeClass('active');
             search(`get`, `https://autumnfish.cn/api/cq/category?type=${heroType}`, '',res=>{
                 $('.heroList').html(template('t2',res.data));
                 $('.pageNumber').val(`1/1`);
@@ -161,7 +161,38 @@
             }
         )
     })
+    //清除遮罩层
     $('.mask').on('click',(e)=>{
         $('.mask').fadeOut();
+    })
+    //设置拖动菜单框
+    let x = 0;
+    let y = 0;
+    let flag = false;
+    $('.searchMenu').hover((e)=>{
+        $('.searchMenu').stop().animate({
+            'border-radius':'50%'
+        })
+        flag=false;
+    })
+    $('.searchMenu').mouseleave((e)=>{
+        $('.searchMenu').stop().animate({
+            'border-radius':'10%'
+        })
+        flag=false;
+    })
+    $('.searchMenu').on('mousedown',(e)=>{
+        x = e.pageX - $('.searchMenu')[0].offsetLeft;
+        y = e.pageY - $('.searchMenu')[0].offsetTop;
+        flag = true;
+    })
+    $('.searchMenu').on('mousemove',(e)=>{
+        if(flag){
+            $('.searchMenu')[0].style.left = (e.pageX - x) + 'px';
+            $('.searchMenu')[0].style.top = (e.pageY - y) + 'px';
+        }
+    })
+    $('.searchMenu').on('mouseup',(e)=>{
+        flag = false;
     })
 })(window)

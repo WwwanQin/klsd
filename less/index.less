@@ -18,6 +18,7 @@ h2,h3,h4,h5,h6{
     font-weight: 500;
     line-height: 55px;
     margin-left: 20px;
+    user-select: none;
 }
 .mask{
     background-color: #222225ed;
@@ -189,14 +190,13 @@ h2,h3,h4,h5,h6{
     position: fixed;
     width: 70px;
     height: 70px;
-    right: 70px;
-    bottom: 70px;
+    left: 1375px;
+    top: 400px;
     background-color: rgb(109, 97, 97);
     color: white;
     border-radius: 10%;
     line-height: 70px;
     text-align: center;
-    transition: all .5s;
     cursor: pointer;
     ul{
         list-style: none;
@@ -212,34 +212,35 @@ h2,h3,h4,h5,h6{
             display: none;
             bottom: 15px;
             right: 15px;
-            &:nth-child(1).active{
+            user-select: none;
+            &:nth-child(1){
                 color: pink;
                 background-color: #e26161;
             }
-            &:nth-child(2).active{
+            &:nth-child(2){
                 color: pink;
                 background-color: #69b7ce;
             }
-            &:nth-child(3).active{
+            &:nth-child(3){
                 color: pink;
                 background-color: #7fb545;
             }
-            &:nth-child(4).active{
+            &:nth-child(4){
                 color: pink;
                 background-color: #deae26;
             }
-            &:nth-child(5).active{
+            &:nth-child(5){
                 color: pink;
                 background-color: #a45bca;
             }
-            &:nth-child(6).active{
+            &:nth-child(6){
                 color: pink;
                 background-color: #e84daa;
             }
         }
     }
 }
-.searchMenu:hover{
-    background-color: rgb(128, 120, 120);
-    border-radius: 50%;
-}
+// .searchMenu:hover{
+//     background-color: rgb(128, 120, 120);
+//     border-radius: 50%;
+// }

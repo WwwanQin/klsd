@@ -22,6 +22,7 @@ h6 {
   font-weight: 500;
   line-height: 55px;
   margin-left: 20px;
+  user-select: none;
 }
 .mask {
   background-color: #222225ed;
@@ -191,14 +192,13 @@ h6 {
   position: fixed;
   width: 70px;
   height: 70px;
-  right: 70px;
-  bottom: 70px;
+  left: 1375px;
+  top: 400px;
   background-color: #6d6161;
   color: white;
   border-radius: 10%;
   line-height: 70px;
   text-align: center;
-  transition: all 0.5s;
   cursor: pointer;
 }
 .searchMenu ul {
@@ -216,32 +216,29 @@ h6 {
   display: none;
   bottom: 15px;
   right: 15px;
+  user-select: none;
 }
-.searchMenu ul li:nth-child(1).active {
+.searchMenu ul li:nth-child(1) {
   color: pink;
   background-color: #e26161;
 }
-.searchMenu ul li:nth-child(2).active {
+.searchMenu ul li:nth-child(2) {
   color: pink;
   background-color: #69b7ce;
 }
-.searchMenu ul li:nth-child(3).active {
+.searchMenu ul li:nth-child(3) {
   color: pink;
   background-color: #7fb545;
 }
-.searchMenu ul li:nth-child(4).active {
+.searchMenu ul li:nth-child(4) {
   color: pink;
   background-color: #deae26;
 }
-.searchMenu ul li:nth-child(5).active {
+.searchMenu ul li:nth-child(5) {
   color: pink;
   background-color: #a45bca;
 }
-.searchMenu ul li:nth-child(6).active {
+.searchMenu ul li:nth-child(6) {
   color: pink;
   background-color: #e84daa;
-}
-.searchMenu:hover {
-  background-color: #807878;
-  border-radius: 50%;
 }
